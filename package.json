@@ -12,8 +12,7 @@
     "ngrok": "0.1.97",
     "request": "~2.37.0",
     "lodash": "2.4.1",
-    "angular-ui-router": "0.2.10",
-    "express-partials": "~0.3.0"
+    "angular-ui-router": "0.2.10"
   },
   "scripts": {
     "start": "nodemon app.js"

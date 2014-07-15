@@ -1,20 +1,29 @@
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $stateProvider){
+angular.module('app').config([
+  '$stateProvider', 
+  '$urlRouterProvider', 
+  '$locationProvider', 
+  '$stateProvider', 
+  function($stateProvider, $urlRouterProvider, $locationProvider, $stateProvider){
  
-$locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(true).hashPrefix('!');
 
-  $urlRouterProvider.otherwise("/");
+    // $urlRouterProvider.otherwise("/");
 
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'home.html'
-    })
-    .state('login',{
-      url:'/login',
-      templateURL:'login.html'
-    })
+    $stateProvider
+      .state('login', {
+        url: '/',
+        templateUrl: 'login.html'
+      })
+      .state('home', {
+        url: '/app',
+        controller: 'HomePageController as controller',
+        templateUrl: 'home.html'
+      })
+      .state('repos', {
+        url: '/repos',
+        controller: 'HomePageController as controller',
+        templateUrl: 'repos.html'
 
+      })
 
-
-
-});
+}]);
