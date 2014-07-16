@@ -25,5 +25,10 @@ angular.module('app').config([
         templateUrl: 'repos.html'
 
       })
+      .state('liveRepo', {
+        url: '/liveRepo',
+        controller: 'LiveRepoController as controller',
+        templateUrl: 'liveRepo.html'
+      })
 
 }]);

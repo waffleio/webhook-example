@@ -2,10 +2,10 @@ angular.module('app').controller('HomePageController', [
   '$scope',
   '$http',
 
-
-
   function($scope,$http){
+
     var user;
+
 
     fetchUserData = function(){
       $http({
@@ -46,9 +46,10 @@ angular.module('app').controller('HomePageController', [
           }
         }
       }).success(function(data,status){
-          console.log
+          // console.log(status)
       })
     }
+
 
 
   }

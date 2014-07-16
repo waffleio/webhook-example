@@ -15,6 +15,7 @@ module.exports = function(app, io){
 
   app.get('/app', renderApp);
   app.get('/repos', renderApp);
+  app.get('/liveRepo', renderApp);
 
   app.get('/api/user', function(req, res){
     if(req.isAuthenticated()){
@@ -36,7 +37,6 @@ module.exports = function(app, io){
     });
 
   app.post('/webhookData', function(req,res){
-    console.log(req.body);
     io.emit('githubEvent', req.body);
     res.send(200);
   })
