@@ -5,21 +5,53 @@ angular.module('app').controller('HomePageController', [
 
 
   function($scope,$http){
+    var user;
 
-    $http({
-      method: 'GET',
-      url : '/user',
-    })
-    .then(function(response){
-      var user = response.data;
+    fetchUserData = function(){
       $http({
         method: 'GET',
-        url: 'https://api.github.com/users/'+ user.username +'/repos',
-        qs: {access_token: user.accessToken}
-          }).success(function(data, status){
-            $scope.repos = data;
-          })
-    })
+        url : '/api/user',
+      })
+      .then(function(response){
+        user = response.data;
+        
+        $http({
+          method: 'GET',
+          url: 'https://api.github.com/users/'+ user.username +'/repos',
+          params: {access_token: user.accessToken}
+        }).success(function(data, status){
+          $scope.repos = data;
+        })
+      })
+    }
+
+    fetchUserData();
+
+    $scope.createWebHook = function(repoUrl){
+      $http({
+        method: 'POST',
+        url:  repoUrl + "/hooks",
+        params: {access_token: user.accessToken},
+        json: true,
+        data:{
+          "active": true,
+          "name": "web",
+          "events": [
+            "push",
+            "pull_request"
+          ],
+          "config":{
+            "url": "http://www.18be6b19.ngrok.com",
+            "content_type": "json",
+            "secret": "webhooks"
+          }
+        }
+      }).success(function(data,status){
+          $scope.data = data;
+      })
+    }
+
   }
+
 
 ]);

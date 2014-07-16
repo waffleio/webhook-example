@@ -9,7 +9,7 @@
     "passport-github": "^0.1.5",
     "angular": "^1.2.19",
     "dotenv": "0.4.0",
-    "ngrok": "0.1.97",
+    "ngrok": "~0.1.97",
     "request": "~2.37.0",
     "lodash": "2.4.1",
     "angular-ui-router": "0.2.10"
