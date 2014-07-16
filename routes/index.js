@@ -1,5 +1,5 @@
 
-module.exports = function(app){
+module.exports = function(app, io){
 
   app.get('/', function(req, res){
     res.render('index');
@@ -35,5 +35,10 @@ module.exports = function(app){
       res.redirect('/app');
     });
 
+  app.post('/webhookData', function(req,res){
+    console.log(req.body);
+    io.emit('githubEvent', req.body);
+    res.send(200);
+  })
 
 }

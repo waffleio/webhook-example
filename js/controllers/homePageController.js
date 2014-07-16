@@ -37,19 +37,19 @@ angular.module('app').controller('HomePageController', [
           "active": true,
           "name": "web",
           "events": [
-            "push",
-            "pull_request"
+              "*"
           ],
           "config":{
-            "url": "http://www.18be6b19.ngrok.com",
+            "url": "http://18be6b19.ngrok.com/webhookData",
             "content_type": "json",
             "secret": "webhooks"
           }
         }
       }).success(function(data,status){
-          $scope.data = data;
+          console.log
       })
     }
+
 
   }
 

@@ -45,12 +45,14 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-/******ROUTES******/
-routes(app);
-
 //******CREATE SERVER******
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+
+var io = require('socket.io').listen(server);
+
+routes(app, io);
+
+server.listen(app.get('port'), function(){
   console.log("listening on port "+ app.get('port'));
 });
-
 
