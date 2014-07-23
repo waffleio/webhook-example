@@ -15,7 +15,9 @@ module.exports = function(app, io){
 
   app.get('/app', renderApp);
   app.get('/repos', renderApp);
-  app.get('/liveRepo', renderApp);
+  app.get('/liveRepo', function(req,res){
+    console.log(res.json(req.user));
+  });
 
   app.get('/api/user', function(req, res){
     if(req.isAuthenticated()){

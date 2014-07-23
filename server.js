@@ -12,10 +12,11 @@ var githubSecret = process.env.GITHUB_CLIENT_SECRET;
 
 var app = express();
 app.set('port', process.env.PORT || 9001);
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/client/views');
 app.set('view engine', 'jade');
 
-app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/client/vendor/'));
+app.use(express.static(__dirname + '/client/app'));
 app.use(express.static(__dirname + '/client/partials'));
 app.use(express.cookieParser());
 app.use(express.bodyParser()); //middleware parser

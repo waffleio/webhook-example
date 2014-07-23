@@ -1,12 +1,5 @@
-<script type="text/javascript">
-  
-      var sockets = io.connect()
-      sockets.on('githubEvent',function(data){
-        console.log(data)
-      })
-</script>
 <div ng-repeat="repo in repos">
   <a ng-href="{{repo.owner.html_url}}/{{repo.name}}"> {{repo.name}}</a> <button ng-click="createWebHook(repo.url)">Create WebHook</button>
-  <a ui-sref="liveRepo">show live repo</a>
+  <a ui-sref="liveRepo({repoName: repo.name })">show live repo</a>
 </div>
 

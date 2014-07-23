@@ -15,7 +15,7 @@
     "angular-ui-router": "0.2.10"
   },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "devDependencies": {
     "nodemon": "^1.2.1",

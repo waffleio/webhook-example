@@ -40,13 +40,16 @@ angular.module('app').controller('HomePageController', [
               "*"
           ],
           "config":{
-            "url": "http://18be6b19.ngrok.com/webhookData",
+            "url": "http://4c3b0aa9.ngrok.com/webhookData",
             "content_type": "json",
             "secret": "webhooks"
           }
         }
       }).success(function(data,status){
-          // console.log(status)
+        alert('webhook created successfully');
+          
+      }).error(function(data,status){
+        if(status === 422){ alert('A webhook already exists for that repo');}
       })
     }
 
