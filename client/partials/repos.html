@@ -1,5 +1,9 @@
-<div ng-repeat="repo in repos">
-  <a ng-href="{{repo.owner.html_url}}/{{repo.name}}"> {{repo.name}}</a> <button ng-click="createWebHook(repo.url)">Create WebHook</button>
-  <a ui-sref="liveRepo({repoName: repo.name })">show live repo</a>
+<div class="btn-group" dropdown>
+  <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+  My Repos <span class="caret"></span>
+  </button>
+  
+  <ul class="dropdown-menu" role="menu">
+    <li ng-repeat="repo in repos"><a ng-click="createWebHook(repo.url)" ui-sref="liveRepo({repoName: repo.name })"> {{repo.name}}</a></li>
+  </ul>
 </div>
-

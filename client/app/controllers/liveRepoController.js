@@ -5,17 +5,16 @@ angular.module('app').controller('LiveRepoController', [
   
 
   function($scope,$http,$stateParams){
-    console.log('stateParams are',$stateParams)
+
+    $scope.events = [];
+    $scope.repoName = $stateParams.repoName;
       var sockets = io.connect();
         sockets.on('githubEvent',function(data){
-        console.log(data.repository.name);
           if(data.repository.name === $stateParams.repoName){
-            $scope.alldata = data;
+            $scope.events.push(data);
             $scope.$apply();
           }
         })
 
-
   }
 ]);
-

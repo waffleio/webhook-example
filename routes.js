@@ -35,7 +35,7 @@ module.exports = function(app, io){
   app.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
-      res.redirect('/app');
+      res.redirect('/repos');
     });
 
   app.post('/webhookData', function(req,res){

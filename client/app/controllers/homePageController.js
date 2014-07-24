@@ -46,10 +46,11 @@ angular.module('app').controller('HomePageController', [
           }
         }
       }).success(function(data,status){
-        alert('webhook created successfully');
+        // alert('webhook created successfully');
           
       }).error(function(data,status){
-        if(status === 422){ alert('A webhook already exists for that repo');}
+        return res.send(status);
+        // if(status === 422){ alert('A webhook already exists for that repo');}
       })
     }
 
