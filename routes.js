@@ -1,23 +1,19 @@
-
 module.exports = function(app, io){
 
-  app.get('/', function(req, res){
-    res.render('index');
-  });
-
-  var renderApp = function(req, res){
-    if(req.isAuthenticated()){
-      res.render('index');
-    } else {
-      res.redirect('/');
+  var renderApp = function(req, res) {
+    console.log('renderApp');
+    if(!req.isAuthenticated()){
+      console.log('redirecting');
+      return res.redirect('/');
     }
+    res.render('index');
   }
 
-  app.get('/app', renderApp);
-  app.get('/repos', renderApp);
-  app.get('/liveRepo', function(req,res){
-    console.log(res.json(req.user));
+  app.get('/', function(req, res) {
+    res.render('index');
   });
+  
+  app.get('/repos', renderApp);
 
   app.get('/api/user', function(req, res){
     if(req.isAuthenticated()){
@@ -26,7 +22,6 @@ module.exports = function(app, io){
       res.send(401);
     }
   });
-
 
   //github redirect
   app.get('/auth/github', passport.authenticate('github', { scope: 'write:repo_hook, public_repo' }));
@@ -39,8 +34,13 @@ module.exports = function(app, io){
     });
 
   app.post('/webhookData', function(req,res){
-    io.emit('githubEvent', req.body);
+    io.emit('githubEvent:' + req.body.repository.full_name, {
+      event: req.headers['x-GitHub-event'],
+      data: req.body
+    });
+    console.log('githubEvent:' + req.body.repository.full_name);
     res.send(200);
   })
 
+  app.get('/:owner/:repo', renderApp);
 }

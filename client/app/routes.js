@@ -3,32 +3,26 @@ angular.module('app').config([
   '$urlRouterProvider', 
   '$locationProvider', 
   '$stateProvider', 
-  function($stateProvider, $urlRouterProvider, $locationProvider, $stateProvider){
+  
+  function($stateProvider, $urlRouterProvider, $locationProvider, $stateProvider) {
  
     $locationProvider.html5Mode(true).hashPrefix('!');
-
-    // $urlRouterProvider.otherwise("/");
 
     $stateProvider
       .state('login', {
         url: '/',
-        templateUrl: 'login.html'
-      })
-      .state('home', {
-        url: '/app',
-        controller: 'HomePageController as controller',
-        templateUrl: 'home.html'
+        templateUrl: '/login.html'
       })
       .state('repos', {
         url: '/repos',
         controller: 'HomePageController as controller',
-        templateUrl: 'repos.html'
+        templateUrl: '/repos.html'
 
       })
       .state('liveRepo', {
-        url: '/liveRepo/:repoName',
+        url: '/:owner/:repo',
         controller: 'LiveRepoController as controller',
-        templateUrl: 'liveRepo.html'
+        templateUrl: '/liveRepo.html'
       })
 
 }]);

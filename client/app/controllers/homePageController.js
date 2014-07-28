@@ -13,8 +13,8 @@ angular.module('app').controller('HomePageController', [
         url : '/api/user',
       })
       .then(function(response){
-        user = response.data;
-        
+        $scope.user = user = response.data;
+
         $http({
           method: 'GET',
           url: 'https://api.github.com/users/'+ user.username +'/repos',
@@ -49,8 +49,7 @@ angular.module('app').controller('HomePageController', [
         // alert('webhook created successfully');
           
       }).error(function(data,status){
-        return res.send(status);
-        // if(status === 422){ alert('A webhook already exists for that repo');}
+        if(status === 422){ return 200;}
       })
     }
 

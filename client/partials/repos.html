@@ -4,6 +4,6 @@
   </button>
   
   <ul class="dropdown-menu" role="menu">
-    <li ng-repeat="repo in repos"><a ng-click="createWebHook(repo.url)" ui-sref="liveRepo({repoName: repo.name })"> {{repo.name}}</a></li>
+    <li ng-repeat="repo in repos"><a ng-click="createWebHook(repo.url)" ui-sref="liveRepo({owner: user.username, repo: repo.name })"> {{repo.name}}</a></li>
   </ul>
 </div>
