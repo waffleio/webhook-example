@@ -1,4 +1,4 @@
-angular.module('app').controller('LiveRepoController', [
+angular.module('app').controller('EventsController', [
   '$scope',
   '$http',
   '$stateParams',
@@ -9,11 +9,8 @@ angular.module('app').controller('LiveRepoController', [
 
     var sockets = io.connect();
     sockets.on('githubEvent:' + $stateParams.owner + '/' + $stateParams.repo, function(event) {
-      data = event.data;
-      if (data.repository.name === $stateParams.repo) {
-        $scope.events.push(data);
-        $scope.$apply();
-      }
+      $scope.events.push(event);
+      $scope.$apply();
     });
   }
 ]);

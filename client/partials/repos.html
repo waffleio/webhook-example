@@ -1,9 +1,9 @@
 <div class="btn-group" dropdown>
-  <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+  <button type="button" class="btn btn-primary dropdown-toggle">
   My Repos <span class="caret"></span>
   </button>
-  
+
   <ul class="dropdown-menu" role="menu">
-    <li ng-repeat="repo in repos"><a ng-click="createWebHook(repo.url)" ui-sref="liveRepo({owner: user.username, repo: repo.name })"> {{repo.name}}</a></li>
+    <li ng-repeat="repo in repos"><a ng-click="createWebHook(repo.url)" ui-sref="events({owner: user.username, repo: repo.name })"> {{repo.name}}</a></li>
   </ul>
 </div>
