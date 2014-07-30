@@ -11,10 +11,10 @@ angular.module('app').config([
         url: '/',
         templateUrl: '/login.html'
       })
-      .state('repos', {
-        url: '/repos',
-        controller: 'ReposController as controller',
-        templateUrl: '/repos.html'
+      .state('projects', {
+        url: '/projects',
+        controller: 'ProjectsController as controller',
+        templateUrl: '/projects.html'
 
       })
       .state('events', {

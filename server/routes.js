@@ -26,7 +26,7 @@ module.exports = function(app, io) {
   app.get('/auth/waffle/callback',
     passport.authenticate('waffle', { failureRedirect: '/' }),
     function(req, res) {
-      res.redirect('/repos');
+      res.redirect('/projects');
     });
 
   /*
@@ -53,6 +53,6 @@ module.exports = function(app, io) {
   app.get('/', function(req, res) {
     res.render('index');
   });
-  app.get('/repos', renderApp);
+  app.get('/projects', renderApp);
   app.get('/:owner/:repo', renderApp);
 }
