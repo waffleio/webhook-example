@@ -6,13 +6,12 @@ module.exports = function(app, io) {
    * Webhook Receiver
    */
   app.post('/webhookData', function(req,res){
-    if (!req.body.repository) {
-      console.log('No repository on event:', req.body);
-      return;
-    }
+    // if (!req.body.repository) {
+    //   console.log('No repository on event:', req.body);
+    //   return;
+    // }
 
-    io.emit('githubEvent:' + req.body.repository.full_name, {
-      type: req.headers['x-GitHub-event'],
+    io.emit('waffleEvent', {
       data: req.body
     });
 

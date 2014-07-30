@@ -4,6 +4,6 @@
   </button>
 
   <ul class="dropdown-menu" role="menu">
-    <li ng-repeat="project in projects"><a ng-click="createWebHook(project._id)" ui-sref="events({owner: user.username, repo: repo.name })"> {{project.name}}</a></li>
+    <li ng-repeat="project in projects"><a ng-click="createWebHook(project._id)" ui-sref="events({owner: user.username, repo: project.name })"> {{project.name}}</a></li>
   </ul>
 </div>

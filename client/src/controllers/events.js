@@ -8,7 +8,8 @@ angular.module('app').controller('EventsController', [
     $scope.repoName = $stateParams.repo;
 
     var sockets = io.connect();
-    sockets.on('githubEvent:' + $stateParams.owner + '/' + $stateParams.repo, function(event) {
+    sockets.on('waffleEvent', function(event) {
+      console.log(event);
       $scope.events.push(event);
       $scope.$apply();
     });

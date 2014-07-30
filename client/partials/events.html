@@ -1,25 +1,24 @@
 <h3 ng-if="!events.length">Make a change in {{repoName}} to see live events.</h3>
+<!-- <p>{{events}}</p> -->
 <div ng-repeat="event in events">
-  <p>{{events}}</p>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">New Commit by</h3>{{event.data.commits[0].committer.username}}
-    </div>
     <div class="panel-body">
-      <div ng-if="event.type='issue'">
-        <h3>File Modified</h3>
-        {{event.type}}
+      <!-- <div ng-if="event.type='issue'"> -->
+        <h3>Column where change happened</h3>
+        {{event.data.column.columnDescriptionHeader}}
         <!-- {{event.data.commits[0].modified[0]}} -->
-      </div>
+      <!-- </div> -->
       <div>
-        <h3>Compare</h3>
+        <h3>Change made by</h3>
+        <!-- {{event.data.column}} -->
         <!-- <a href="{{event.data.compare}}">{{event.data.compare}}</a> -->
-        {{event.type}}
+        <!-- {{event.type}} -->
       </div>
       <div>
-        <h3>Action</h3>
+        <!-- <h3>Action</h3> -->
         <!-- {{event.data.action}} -->
-        {{event.type}}
+        <!-- {{event.type}} -->
       </div>
     </div>
   </div>
