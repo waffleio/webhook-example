@@ -22,9 +22,9 @@ module.exports = function(app, io) {
   /*
    * Auth Routes
    */
-  app.get('/auth/github', passport.authenticate('github', { scope: 'write:repo_hook, public_repo' }));
-  app.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: '/' }),
+  app.get('/auth/waffle', passport.authenticate('waffle', {scope: '*'}));
+  app.get('/auth/waffle/callback',
+    passport.authenticate('waffle', { failureRedirect: '/' }),
     function(req, res) {
       res.redirect('/repos');
     });

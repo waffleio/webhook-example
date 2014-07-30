@@ -1,5 +1,5 @@
 var passport = require('passport'),
-    GitHubStrategy  = require('passport-github').Strategy;
+    WaffleStrategy  = require('passport-waffle.io').Strategy;
 
 module.exports = {
   init: function(app) {
@@ -11,10 +11,12 @@ module.exports = {
       done(null, obj);
     });
 
-    passport.use(new GitHubStrategy({
-        clientID: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:" + app.get('port') + "/auth/github/callback"
+    passport.use(new WaffleStrategy({
+        baseURL: 'http://localhost:3001',
+        clientID: process.env.WAFFLE_CLIENT_ID,
+        clientSecret: process.env.WAFFLE_CLIENT_SECRET,
+        callbackURL: "http://localhost:" + app.get('port') + "/auth/waffle/callback",
+        userAgent: 'waffle.io-webhooks-demo'
       }, function(accessToken, refreshToken, profile, done) {
         profile.accessToken = accessToken;
         process.nextTick(function () {
