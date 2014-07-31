@@ -6,12 +6,14 @@ module.exports = function(app, io) {
    * Webhook Receiver
    */
   app.post('/webhookData', function(req,res){
+    console.log(req.headers);
     // if (!req.body.repository) {
     //   console.log('No repository on event:', req.body);
     //   return;
     // }
 
     io.emit('waffleEvent', {
+      type: req.headers['x-waffle-event'],
       data: req.body
     });
 
@@ -53,5 +55,5 @@ module.exports = function(app, io) {
     res.render('index');
   });
   app.get('/projects', renderApp);
-  app.get('/:owner/:repo', renderApp);
+  app.get('/:repo', renderApp);
 }

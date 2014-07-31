@@ -20,6 +20,7 @@ angular.module('app').controller('EventsController', [
 
     var sockets = io.connect();
     sockets.on('waffleEvent', function(event) {
+      console.log(event);
       $scope.events.push(event);
       $scope.$apply();
     });
@@ -33,6 +34,7 @@ angular.module('app').controller('EventsController', [
         url:"http://522ed480.ngrok.com/webhookData"
       }
     });
+    console.log("webhook created");
   }
 
 
