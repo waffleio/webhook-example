@@ -11,7 +11,7 @@ angular.module('app').service('User', [
 
         $http({
           method: 'GET',
-          url: 'http://localhost:3001/api/user/projects',
+          url: 'https://waffle.io/api/user/projects',
           params: {access_token: user.accessToken}
         }).success(function(projects) {
           successCallback(projects);

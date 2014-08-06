@@ -12,7 +12,7 @@ module.exports = {
     });
 
     passport.use(new WaffleStrategy({
-        baseURL: 'http://localhost:3001',
+        baseURL: 'https://waffle.io',
         clientID: process.env.WAFFLE_CLIENT_ID,
         clientSecret: process.env.WAFFLE_CLIENT_SECRET,
         callbackURL: "http://localhost:" + app.get('port') + "/auth/waffle/callback",

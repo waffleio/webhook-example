@@ -6,7 +6,7 @@ module.exports = function(app, io) {
    * Webhook Receiver
    */
   app.post('/webhookData', function(req,res){
-    console.log(req.headers);
+    console.log('headers are:',req.headers);
     // if (!req.body.repository) {
     //   console.log('No repository on event:', req.body);
     //   return;
@@ -19,6 +19,16 @@ module.exports = function(app, io) {
 
     res.status(200).end()
   })
+
+  /*
+    *Env variables routes
+  */
+  app.get('/environment', function(req,res){
+    res.json({
+      callbackBaseUrl: process.env.CALLBACK_BASE_URL
+    });
+
+  });
 
   /*
    * Auth Routes

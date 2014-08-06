@@ -3,8 +3,9 @@ angular.module('app').controller('EventsController', [
   '$http',
   '$stateParams',
   'User',
+  'EnvironmentService',
 
-  function($scope, $http, $stateParams, User) {
+  function($scope, $http, $stateParams, User, EnvironmentService) {
     $scope.events = [];
     $scope.repoName = $stateParams.repo;
     User.projects(function(projects) {
@@ -26,15 +27,21 @@ angular.module('app').controller('EventsController', [
     });
 
     $scope.createWebHook = function(id){
-    $http({
-      method: 'POST',
-      url:  "http://localhost:3001/api/projects/" + id + "/hooks",
-      params: {access_token: $scope.user.accessToken},
-      data:{
-        url:"http://522ed480.ngrok.com/webhookData"
-      }
-    });
-    console.log("webhook created");
+
+      EnvironmentService.getEnvironment().then(function(environment){
+        $http({
+          method: 'POST',
+          url:  "https://waffle.io/api/projects/" + id + "/hooks",
+          params: {access_token: $scope.user.accessToken},
+          data:{
+            url: environment.callbackBaseUrl + '/webhookData'
+          }
+        });
+        console.log("webhook created");
+
+      })
+
+
   }
 
 
