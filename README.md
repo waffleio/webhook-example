@@ -12,4 +12,4 @@ To start the app:
 - `npm install`
 - `npm start`, or, if setting env vars inline: `WAFFLE_CLIENT_ID=<your id> WAFFLE_CLIENT_SECRET=<your secret> CALLBACK_BASE_URL=<http://<something>.ngrok.com npm start`
 
-We use the [https://github.com/waffleio/passport-waffle.io](passport-waffle.io) strategy for oauth. It's open source, if you're building a NodeJS application it's the way to go.
+We use the [passport-waffle.io](https://github.com/waffleio/passport-waffle.io) strategy for oauth. It's open source, if you're building a NodeJS application it's the way to go.
