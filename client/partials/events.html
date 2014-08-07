@@ -1,13 +1,17 @@
-<button ng-click="createWebHook(project._id)">Create Webhook for: {{project.name}}</button>
-<h3 ng-if="!events.length">Make a change in {{repoName}} to see live events.</h3>
+<div class="events">
+  <button type="submit" class="btn btn-primary" ng-click="createWebHook(project._id)">Create Webhook for {{project.name}}</button>
+  <h3 ng-if="!events.length">Make a change in {{repoName}} to see live events.</h3>
 
-<p>{{events.data}}</p>
-<div ng-repeat="event in events">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-    <div class="panel-body">
-    <h4>event type:</h4>
-      <a href="#" ng-click="showDetails=!showDetails">{{event.type}}</a>
-      <p ng-show="showDetails">{{event.data}}</p>
+  <div ng-repeat="event in events">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>{{event.type}}</h4>
+        <a href="#" ng-click="showDetails=!showDetails">show details</a>
+        <pre ng-show="showDetails">{{event.prettyData}}</pre>
+      </div>
     </div>
+
+  </div>
+
+</div>
 

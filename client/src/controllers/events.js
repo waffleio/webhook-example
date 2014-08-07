@@ -20,7 +20,7 @@ angular.module('app').controller('EventsController', [
 
     var sockets = io.connect();
     sockets.on('waffleEvent', function(event) {
-      console.log(event);
+      event.prettyData = angular.toJson(event.data, true);
       $scope.events.push(event);
       $scope.$apply();
     });

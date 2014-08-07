@@ -19,6 +19,7 @@ fs.realpath(__dirname + '/../', function (err, projectRoot) {
   app.use(require('serve-static')(projectRoot + '/client/vendor'));
   app.use(require('serve-static')(projectRoot + '/client/src'));
   app.use(require('serve-static')(projectRoot + '/client/partials'));
+  app.use(require('serve-static')(projectRoot + '/client/styles'));
   app.use(require('cookie-parser')());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
