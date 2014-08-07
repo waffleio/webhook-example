@@ -18,7 +18,7 @@ angular.module('app').config([
 
       })
       .state('events', {
-        url: '/:repo',
+        url: '/projects/:id',
         controller: 'EventsController as controller',
         templateUrl: '/events.html'
       })

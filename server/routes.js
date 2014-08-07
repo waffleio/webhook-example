@@ -65,5 +65,5 @@ module.exports = function(app, io) {
     res.render('index');
   });
   app.get('/projects', renderApp);
-  app.get('/:repo', renderApp);
+  app.get('/projects/:id', renderApp);
 }

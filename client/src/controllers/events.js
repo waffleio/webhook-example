@@ -7,9 +7,8 @@ angular.module('app').controller('EventsController', [
 
   function($scope, $http, $stateParams, User, EnvironmentService) {
     $scope.events = [];
-    $scope.repoName = $stateParams.repo;
     User.projects(function(projects) {
-      $scope.projects = projects;
+      $scope.project = _.find(projects, function(project){return project._id === $stateParams.id});
     });
 
     $http({

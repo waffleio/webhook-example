@@ -1,6 +1,4 @@
-<div ng-repeat="project in projects">
-<button ng-if="project.name == repoName" ng-click="createWebHook(project._id)">{{project.name}}</button>
-</div>
+<button ng-click="createWebHook(project._id)">Create Webhook for: {{project.name}}</button>
 <h3 ng-if="!events.length">Make a change in {{repoName}} to see live events.</h3>
 
 <p>{{events.data}}</p>
@@ -8,7 +6,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
     <div class="panel-body">
-    {{event.data}}
+    {{event.type}}
       <!-- <div ng-if="event.type='issue'"> -->
         <h3>Column where change happened</h3>
         {{event.data.column.columnDescriptionHeader}}
