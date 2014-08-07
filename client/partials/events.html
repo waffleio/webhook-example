@@ -6,23 +6,8 @@
   <div class="panel panel-default">
     <div class="panel-heading">
     <div class="panel-body">
-    {{event.type}}
-      <!-- <div ng-if="event.type='issue'"> -->
-        <h3>Column where change happened</h3>
-        {{event.data.column.columnDescriptionHeader}}
-        <!-- {{event.data.commits[0].modified[0]}} -->
-      <!-- </div> -->
-      <div>
-        <h3>Change made by</h3>
-        <!-- {{event.data.column}} -->
-        <!-- <a href="{{event.data.compare}}">{{event.data.compare}}</a> -->
-        <!-- {{event.type}} -->
-      </div>
-      <div>
-        <!-- <h3>Action</h3> -->
-        <!-- {{event.data.action}} -->
-        <!-- {{event.type}} -->
-      </div>
+    <h4>event type:</h4>
+      <a href="#" ng-click="showDetails=!showDetails">{{event.type}}</a>
+      <p ng-show="showDetails">{{event.data}}</p>
     </div>
-  </div>
-</div>
+
